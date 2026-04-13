@@ -1,12 +1,19 @@
+import sys
+import os
 import tkinter as tk
 from tkinter import ttk
 
 from tkinter.filedialog import askopenfilename, asksaveasfilename
 from tkinter import messagebox
 
+def resource_path(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
 # The main window
 window = tk.Tk()
-window.iconbitmap("muknote.ico")
+window.iconbitmap(resource_path("src/muknote.ico"))
 
 window.title("Muksnote")
 window.rowconfigure(0, minsize=25)
